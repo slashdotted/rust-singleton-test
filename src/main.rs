@@ -31,6 +31,7 @@ impl Hasher256 {
 
 impl Hasher for Hasher256 {
     fn hash_str(&mut self, data : &str) -> String {
+        crypto::digest::Digest::reset(&mut self.hasher);
         crypto::digest::Digest::input(&mut self.hasher, data.as_bytes());
         crypto::digest::Digest::result_str(&mut self.hasher)
     }
@@ -50,6 +51,7 @@ impl Hasher512 {
 
 impl Hasher for Hasher512 {
     fn hash_str(&mut self, data : &str) -> String {
+        crypto::digest::Digest::reset(&mut self.hasher);
         crypto::digest::Digest::input(&mut self.hasher, data.as_bytes());
         crypto::digest::Digest::result_str(&mut self.hasher)
     }
